@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXListView?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import io.github.palexdev.materialfx.font.MFXFontIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F4EAE6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StartController">
+   <center>
+      <AnchorPane fx:id="parentAnchorPane" onMouseClicked="#deselect" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <MFXButton fx:id="startButton" alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" layoutX="215.0" layoutY="175.0" onAction="#startPressed" prefHeight="51.0" prefWidth="170.0" rippleAnimationSpeed="4.0" rippleColor="#2f5061" style="-fx-background-color: #4297A0;" text="START" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </MFXButton>
+            <MFXComboBox fx:id="jobDropdown" layoutX="110.0" layoutY="123.0" lineColor="#2f5061" lineStrokeWidth="3.0" maxWidth="170.0" prefHeight="27.0" prefWidth="170.0" promptText="Job" unfocusedLineColor="#ababab" validated="true" />
+            <MFXComboBox fx:id="descriptionDropdown" layoutX="320.0" layoutY="123.0" lineColor="#2f5061" lineStrokeWidth="3.0" maxWidth="170.0" prefHeight="27.0" prefWidth="170.0" promptText="Description" unfocusedLineColor="#ababab" validated="true" />
+            <Label fx:id="missingInfoLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="253.0" text="Missing Information" textAlignment="CENTER" textFill="#ee4e56" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="logFileFoundLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="41.0" layoutY="348.0" prefHeight="40.0" prefWidth="518.0" text="The application has failed to save an entry. Please re-enter failed entries. View &quot;temp/logs.log&quot;.&#10;Deleting the log file will clear this message." textAlignment="CENTER" textFill="#ee4e56" visible="false" />
+            <Pane fx:id="timeLoggedLabel" layoutX="248.0" layoutY="378.0" prefHeight="20.0" prefWidth="105.0" visible="false">
+               <children>
+                  <Label alignment="CENTER" layoutX="21.0" prefHeight="20.0" text="Time Logged" textAlignment="CENTER" textFill="#0b9a64">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <MFXFontIcon color="#0b9a64" description="mfx-variant7-mark" layoutY="15.0" size="13.0" text="" />
+               </children>
+            </Pane>
+            <Rectangle height="30.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.95686274766922" green="0.9176470637321472" blue="0.9019607901573181" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.007662835249042145">
+                           <color>
+                              <Color red="1.0" green="0.9635030627250671" blue="0.9490740895271301" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.9215686321258545" green="0.8666666746139526" blue="0.843137264251709" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <HBox fx:id="topBar" alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="600.0" spacing="10.0">
+               <children>
+                  <MFXButton depthLevel="LEVEL1" onAction="#viewTimePressed" prefHeight="30.0" rippleAnimationSpeed="4.0" style="-fx-background-color: #ffffff00;" text="View Time">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </MFXButton>
+                  <MFXButton depthLevel="LEVEL1" onAction="#customEntryPressed" prefHeight="30.0" rippleAnimationSpeed="4.0" style="-fx-background-color: #ffffff00;" text="Custom Entry">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </MFXButton>
+                  <MFXButton depthLevel="LEVEL1" onAction="#openJobsEditor" prefHeight="30.0" rippleAnimationSpeed="4.0" style="-fx-background-color: #ffffff00;" text="Edit Jobs">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </MFXButton>
+                  <MFXButton depthLevel="LEVEL1" onAction="#openDescriptionsEditor" prefHeight="30.0" rippleAnimationSpeed="4.0" style="-fx-background-color: #ffffff00;" text="Edit Descriptions">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </MFXButton>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+            <Pane fx:id="descriptionsEditor" onMouseClicked="#deselect" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F4EAE6;" visible="false">
+               <children>
+                  <MFXListView fx:id="descriptionsListView" depthLevel="LEVEL1" hideAfter="300.0ms" hideScrollBars="true" layoutX="240.0" layoutY="56.0" prefHeight="288.0" prefWidth="230.0" style="-fx-background-radius: 10;">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></MFXListView>
+                  <MFXTextField fx:id="newDescriptionTextField" layoutX="52.0" layoutY="98.0" lineColor="#4db58c" lineStrokeWidth="3.0" onKeyReleased="#descriptionLengthCheck" prefHeight="25.0" prefWidth="155.0" promptText="New Description" unfocusedLineColor="#ababab" validated="true" />
+                  <MFXButton fx:id="addDescriptionButton" alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" disable="true" layoutX="52.0" layoutY="133.0" onAction="#addDescriptionClicked" prefHeight="32.0" prefWidth="72.0" rippleAnimationSpeed="2.0" rippleColor="#8ae1be" style="-fx-background-color: #4db58c;" text="Add" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </MFXButton>
+                  <MFXButton fx:id="removeDescriptionButton" alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" disable="true" layoutX="477.0" layoutY="133.0" onAction="#removeDescriptionClicked" prefHeight="32.0" prefWidth="72.0" rippleAnimationSpeed="2.0" rippleColor="#c6bcff" style="-fx-background-color: #9f8eff;" text="Remove" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </MFXButton>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeDescriptionsEditor" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ffffff00;" textAlignment="CENTER" textFill="#4a4a4a">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <MFXFontIcon description="mfx-angle-left" fill="#2f5061" size="30.0" />
+                     </graphic>
+                  </Button>
+                  <Label fx:id="descriptionLengthWarning" alignment="CENTER" layoutX="52.0" layoutY="175.0" text="Keep it short if you can" textAlignment="CENTER" textFill="#e47272" visible="false">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+            <Pane fx:id="jobsEditor" onMouseClicked="#deselect" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F4EAE6;" visible="false">
+               <children>
+                  <MFXListView fx:id="jobsListView" depthLevel="LEVEL1" hideAfter="300.0ms" hideScrollBars="true" layoutX="240.0" layoutY="56.0" prefHeight="288.0" prefWidth="230.0" style="-fx-background-radius: 10;">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </MFXListView>
+                  <MFXTextField fx:id="clientTextField" layoutX="52.0" layoutY="96.0" lineColor="#4db58c" lineStrokeWidth="3.0" onKeyReleased="#jobLengthCheck" prefHeight="25.0" prefWidth="155.0" promptText="Client" unfocusedLineColor="#ababab" validated="true" />
+                  <MFXTextField fx:id="jobTextField" layoutX="52.0" layoutY="131.0" lineColor="#4db58c" lineStrokeWidth="3.0" onKeyReleased="#jobLengthCheck" prefHeight="25.0" prefWidth="155.0" promptText="Job" unfocusedLineColor="#ababab" validated="true" />
+                  <MFXButton fx:id="addJobButton" alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" disable="true" layoutX="52.0" layoutY="168.0" onAction="#addJobClicked" prefHeight="32.0" prefWidth="72.0" rippleAnimationSpeed="2.0" rippleColor="#8ae1be" style="-fx-background-color: #4db58c;" text="Add" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </MFXButton>
+                  <MFXButton fx:id="removeJobButton" alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" disable="true" layoutX="477.0" layoutY="168.0" onAction="#removeJobClicked" prefHeight="32.0" prefWidth="72.0" rippleAnimationSpeed="2.0" rippleColor="#c6bcff" style="-fx-background-color: #9f8eff;" text="Remove" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </MFXButton>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeJobsEditor" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ffffff00;" textAlignment="CENTER" textFill="#4a4a4a">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <MFXFontIcon description="mfx-angle-left" fill="#2f5061" size="30.0" />
+                     </graphic>
+                  </Button>
+                  <Label layoutX="52.0" layoutY="77.0" text="New Job:" textAlignment="CENTER" textFill="#ababab">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="jobLengthWarning" alignment="CENTER" layoutX="52.0" layoutY="210.0" text="Keep it short if you can" textAlignment="CENTER" textFill="#e47272" visible="false">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

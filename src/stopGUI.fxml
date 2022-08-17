@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXProgressSpinner?>
+<?import io.github.palexdev.materialfx.font.MFXFontIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F4EAE6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StopController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <MFXButton fx:id="stopButton" alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" layoutX="215.0" layoutY="175.0" onAction="#stopPressed" prefHeight="51.0" prefWidth="170.0" rippleAnimationSpeed="4.0" rippleColor="#4297a0" style="-fx-background-color: #2F5061;" text="STOP" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </MFXButton>
+            <Label fx:id="recordingText" layoutX="240.0" layoutY="147.0" prefHeight="20.0" prefWidth="145.0" text="Recording (0:00)" textAlignment="CENTER" textFill="#ee4e56">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <MFXProgressSpinner layoutX="215.0" layoutY="149.0" radius="5.0" startingAngle="0.0" />
+            <Label fx:id="jobDescriptionText" alignment="CENTER" layoutX="50.0" layoutY="251.0" prefHeight="20.0" prefWidth="500.0" text="Job - Description" textAlignment="CENTER" textFill="#ababab">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Pane fx:id="stopWhenClosedPrompt" layoutX="115.0" layoutY="296.0" prefHeight="90.0" prefWidth="370.0" visible="false">
+               <children>
+                  <Rectangle arcHeight="30.0" arcWidth="30.0" height="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="370.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="1.0" green="0.7058823704719543" blue="0.658823549747467" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Label alignment="CENTER" layoutX="41.0" layoutY="16.0" text="Application closed while tracking" textAlignment="CENTER" textFill="#4a4a4a">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <MFXFontIcon description="mfx-exclamation-circle" fill="#4a4a4a" layoutX="14.0" layoutY="33.0" size="20.0" />
+                  <Label fx:id="timeClosedText" layoutX="41.0" layoutY="37.0" prefHeight="17.0" prefWidth="210.0" text="Time: 00:00 xx/xx/xxxx" textAlignment="CENTER" textFill="#4a4a4a" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="316.0" layoutY="4.0" mnemonicParsing="false" onAction="#closeSWCPrompt" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ffffff00;" textAlignment="CENTER" textFill="#4a4a4a">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <MFXFontIcon description="mfx-x-alt" fill="#4a4a4a" size="15.0" />
+                     </graphic>
+                  </Button>
+                  <MFXButton alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" layoutX="110.0" layoutY="61.0" onAction="#stopWhenClosedPressed" rippleAnimationSpeed="4.0" rippleColor="#ffb4a8" style="-fx-background-color: #ff6955;" text="STOP WHEN CLOSED" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </MFXButton>
+               </children>
+            </Pane>
+            <Rectangle height="30.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.95686274766922" green="0.9176470637321472" blue="0.9019607901573181" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.007662835249042145">
+                           <color>
+                              <Color red="1.0" green="0.9635030627250671" blue="0.9490740895271301" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.9215686321258545" green="0.8666666746139526" blue="0.843137264251709" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <HBox fx:id="topBar" alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="600.0" spacing="10.0">
+               <children>
+                  <MFXButton depthLevel="LEVEL1" onAction="#viewTimePressed" prefHeight="30.0" rippleAnimationSpeed="4.0" style="-fx-background-color: #ffffff00;" text="View Time">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </MFXButton>
+                  <MFXButton depthLevel="LEVEL1" onAction="#customEntryPressed" prefHeight="30.0" rippleAnimationSpeed="4.0" style="-fx-background-color: #ffffff00;" text="Custom Entry">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </MFXButton>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

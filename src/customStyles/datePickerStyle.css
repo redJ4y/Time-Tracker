@@ -1,0 +1,28 @@
+.date-picker .text-field {
+    -fx-background-color: #F4EAE6;
+    -fx-prompt-text-fill: #9f9f9f;
+    -fx-cursor: default;
+}
+
+.date-picker .arrow-button * {
+    -fx-opacity: 0.0;
+}
+
+.date-picker .arrow-button {
+	-fx-background-image: url("icons/calendarIcon.png");
+    -fx-background-size: 23.0px 23.0px;
+    -fx-background-insets: 1.0 1.0 1.0 1.0;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-color: #8c40ff;
+    -fx-background-radius: 3.0;
+}
+
+.date-picker .arrow-button:hover {
+	-fx-background-color: #6200ee;
+}
+
+.date-picker .selected {
+	-fx-background-color: #8c40ff;
+	-fx-text-fill: white;
+}

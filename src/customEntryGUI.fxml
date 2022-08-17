@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import io.github.palexdev.materialfx.font.MFXFontIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F4EAE6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomEntryController">
+   <center>
+      <AnchorPane fx:id="parentAnchorPane" onMouseClicked="#deselect" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="editingLabel" alignment="CENTER" layoutX="506.0" layoutY="17.0" text="EDITING" textAlignment="CENTER" textFill="#b2b2b2" visible="false">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#exitScene" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ffffff00;" textAlignment="CENTER" textFill="#4a4a4a">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <MFXFontIcon description="mfx-angle-left" fill="#2f5061" size="30.0" />
+               </graphic>
+            </Button>
+            <MFXComboBox fx:id="jobDropdown" layoutX="223.0" layoutY="34.0" lineColor="#8c40ff" lineStrokeWidth="2.0" maxWidth="170.0" prefHeight="27.0" prefWidth="170.0" promptText="Job" validated="true" />
+            <MFXComboBox fx:id="descriptionDropdown" layoutX="223.0" layoutY="93.0" lineColor="#8c40ff" lineStrokeWidth="2.0" maxWidth="170.0" prefHeight="27.0" prefWidth="170.0" promptText="Description" validated="true" />
+            <MFXTextField fx:id="startTimeField" layoutX="223.0" layoutY="212.0" lineColor="#8c40ff" onKeyReleased="#validateStartTime" onMouseClicked="#startTimeFieldSelected" prefHeight="25.0" prefWidth="170.0" promptText="Start Time" unfocusedLineColor="#9f9f9f" validated="true" />
+            <MFXTextField fx:id="durationField" layoutX="223.0" layoutY="271.0" lineColor="#8c40ff" onKeyReleased="#validateDuration" onMouseClicked="#durationFieldSelected" prefHeight="25.0" prefWidth="170.0" promptText="Duration" unfocusedLineColor="#9f9f9f" validated="true" />
+            <DatePicker fx:id="datePicker" editable="false" layoutX="223.0" layoutY="152.0" onAction="#validateDate" prefHeight="25.0" prefWidth="170.0" promptText="Date" style="-fx-background-color: #F4EAE6; -fx-border-width: 0;" stylesheets="@customStyles/datePickerStyle.css">
+               <padding>
+                  <Insets left="-6.0" right="-1.0" />
+               </padding></DatePicker>
+            <Line endX="104.0" endY="-4.0" layoutX="289.0" layoutY="181.0" startX="-66.0" startY="-4.0" stroke="#9f9f9f" strokeLineCap="BUTT" strokeWidth="2.0" />
+            <MFXButton fx:id="enterButton" alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" disable="true" layoutX="182.0" layoutY="330.0" onAction="#enterPressed" rippleAnimationSpeed="2.0" rippleColor="#c7a2ff" style="-fx-background-color: #6200ee;" text="ENTER" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </MFXButton>
+            <Label fx:id="timeLabel" layoutX="249.0" layoutY="335.0" prefHeight="17.0" prefWidth="330.0" text="xx hours xx minutes" textFill="#4300a8">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="223.0" layoutY="237.0" prefHeight="17.0" prefWidth="130.0" text="h:mm AM/PM" textFill="#9f9f9f">
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
+            </Label>
+            <Label layoutX="223.0" layoutY="296.0" prefHeight="17.0" prefWidth="130.0" text="h:mm" textFill="#9f9f9f">
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER" layoutX="420.0" layoutY="367.0" prefHeight="19.0" prefWidth="166.0" text="Warning: no overlap protection" textAlignment="CENTER" textFill="#9f9f9f">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Pane fx:id="submittedLabel" layoutX="254.0" layoutY="378.0" prefHeight="20.0" prefWidth="105.0" visible="false">
+               <children>
+                  <Label alignment="CENTER" layoutX="21.0" prefHeight="20.0" text="Submitted" textAlignment="CENTER" textFill="#0b9a64">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <MFXFontIcon color="#0b9a64" description="mfx-variant7-mark" layoutY="15.0" size="13.0" text="" />
+               </children>
+            </Pane>
+            <Line endX="-102.0" endY="34.0" layoutX="292.0" layoutY="72.0" startX="-102.0" startY="-25.0" stroke="#5f00ed7f" strokeWidth="4.0" />
+            <Line endX="-102.0" endY="34.0" layoutX="292.0" layoutY="131.0" startX="-102.0" startY="-25.0" stroke="#5f00ed7f" strokeWidth="4.0" />
+            <Line endX="-102.0" endY="34.0" layoutX="292.0" layoutY="190.0" startX="-102.0" startY="-25.0" stroke="#5f00ed7f" strokeWidth="4.0" />
+            <Line endX="-102.0" endY="34.0" layoutX="292.0" layoutY="249.0" startX="-102.0" startY="-25.0" stroke="#5f00ed7f" strokeWidth="4.0" />
+            <Circle fill="#6200ee" layoutX="190.0" layoutY="47.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="jobCircle" fill="#f4eae6" layoutX="190.0" layoutY="47.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fill="#6200ee" layoutX="190.0" layoutY="106.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="descriptionCircle" fill="#f4eae6" layoutX="190.0" layoutY="106.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fill="#6200ee" layoutX="190.0" layoutY="165.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="dateCircle" fill="#f4eae6" layoutX="190.0" layoutY="165.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fill="#6200ee" layoutX="190.0" layoutY="224.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="startTimeCircle" fill="#f4eae6" layoutX="190.0" layoutY="224.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fill="#6200ee" layoutX="190.0" layoutY="283.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="durationCircle" fill="#f4eae6" layoutX="190.0" layoutY="283.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

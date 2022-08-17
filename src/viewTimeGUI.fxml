@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXRadioButton?>
+<?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyTableView?>
+<?import io.github.palexdev.materialfx.font.MFXFontIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #F4EAE6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewTimeController">
+   <center>
+      <AnchorPane fx:id="parentAnchorPane" onMouseClicked="#deselect" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#exitScene" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ffffff00;" textAlignment="CENTER" textFill="#4a4a4a">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <MFXFontIcon description="mfx-angle-left" fill="#2f5061" size="30.0" />
+               </graphic>
+            </Button>
+            <Pane layoutX="34.0" layoutY="59.0" prefHeight="244.0" prefWidth="217.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+               <children>
+                  <MFXComboBox fx:id="jobDropdown" layoutX="23.0" layoutY="54.0" lineColor="#8c40ff" lineStrokeWidth="2.0" maxWidth="170.0" popupXOffset="1.0" prefHeight="27.0" prefWidth="170.0" promptText="Job" validated="true" />
+                  <MFXComboBox fx:id="timePeriodDropdown" layoutX="25.0" layoutY="168.0" lineColor="#8c40ff" lineStrokeWidth="2.0" maxWidth="170.0" popupXOffset="1.0" prefHeight="27.0" prefWidth="168.0" promptText="Time Period" validated="true" />
+                  <MFXComboBox fx:id="descriptionDropdown" layoutX="24.0" layoutY="111.0" lineColor="#8c40ff" lineStrokeWidth="2.0" maxWidth="170.0" popupXOffset="1.0" prefHeight="27.0" prefWidth="169.0" promptText="Description" validated="true" />
+                  <Label alignment="CENTER" layoutX="44.0" layoutY="15.0" text="Filters" textAlignment="CENTER" textFill="#b68bfc">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <MFXButton fx:id="searchButton" alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" layoutX="106.0" layoutY="231.0" onAction="#search" rippleAnimationSpeed="2.0" rippleColor="#ddc9ff" style="-fx-background-color: #b68bfc;" text="SEARCH" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </MFXButton>
+               </children>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" offsetX="-2.0" offsetY="2.0">
+                     <color>
+                        <Color opacity="0.09956710040569305" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Label fx:id="timeLoggedTitle" alignment="CENTER" layoutX="43.0" layoutY="344.0" prefHeight="20.0" prefWidth="200.0" text="Time Logged" textAlignment="CENTER" textFill="#9f9f9f">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="timeLabel" alignment="CENTER" layoutX="53.0" layoutY="364.0" prefHeight="35.0" prefWidth="180.0" text="h:mm:ss" textAlignment="CENTER" textFill="#0b9a64">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="timeHoursLabel" alignment="CENTER" layoutX="68.0" layoutY="399.0" prefHeight="17.0" prefWidth="150.0" text="0.00 hours" textAlignment="CENTER" />
+            <MFXRadioButton fx:id="roundingToggle" layoutX="88.0" layoutY="434.0" onAction="#roundingChanged" selectedColor="#51b28b" selectedTextColor="#51b28b" text="Round to 15m" unSelectedColor="#c3c3c3" unSelectedTextColor="#9f9f9f">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </MFXRadioButton>
+            <MFXLegacyTableView fx:id="table" layoutX="279.0" layoutY="22.0" maxHeight="440.0" maxWidth="400.0" minHeight="440.0" minWidth="400.0" prefHeight="440.0" prefWidth="400.0" style="-fx-font-size: 11px;" stylesheets="@customStyles/tableStyle.css">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy></MFXLegacyTableView>
+            <MFXButton fx:id="editButton" alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" layoutX="434.0" layoutY="451.0" onAction="#editPressed" prefHeight="27.0" prefWidth="70.0" rippleAnimationSpeed="2.0" rippleColor="#ddc9ff" style="-fx-background-color: white;" text="Edit" textAlignment="CENTER" textFill="#9f9f9f" visible="false">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="removeButton" alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" layoutX="514.0" layoutY="451.0" onAction="#removePressed" prefHeight="27.0" prefWidth="70.0" rippleAnimationSpeed="2.0" rippleColor="#ffc9c9" style="-fx-background-color: white;" text="Remove" textAlignment="CENTER" textFill="#9f9f9f" visible="false">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </MFXButton>
+            <MFXButton alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" layoutX="594.0" layoutY="451.0" onAction="#purgePressed" prefHeight="27.0" prefWidth="70.0" rippleAnimationSpeed="2.0" rippleColor="#ffc9c9" style="-fx-background-color: white;" text="Purge" textAlignment="CENTER" textFill="#9f9f9f">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </MFXButton>
+            <MFXButton alignment="CENTER" computeRadiusMultiplier="false" depthLevel="LEVEL0" layoutX="301.0" layoutY="462.0" onAction="#viewProgramFiles" prefHeight="27.0" prefWidth="107.0" rippleAnimateBackground="false" rippleAnimationSpeed="2.0" rippleColor="#ffffff00" style="-fx-background-color: #ffffff00;" text="View Program Files" textAlignment="CENTER" textFill="#b5b5b5" underline="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </MFXButton>
+            <Pane fx:id="confirmPurgePrompt" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #F4EAE6;" visible="false">
+               <children>
+                  <Rectangle arcHeight="30.0" arcWidth="30.0" height="200.0" layoutX="240.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="220.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="1.0" green="0.7058823704719543" blue="0.658823549747467" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <MFXButton alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" layoutX="350.0" layoutY="296.0" onAction="#confirmPurgePressed" rippleAnimationSpeed="4.0" rippleColor="#ffb4a8" style="-fx-background-color: #ff6955;" text="CONFIRM" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </MFXButton>
+                  <MFXButton alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" layoutX="267.0" layoutY="296.0" onAction="#hidePrompts" rippleAnimationSpeed="4.0" rippleColor="#9ad3ae" style="-fx-background-color: #66ab7f;" text="CANCEL" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </MFXButton>
+                  <Label alignment="CENTER" layoutX="299.0" layoutY="169.0" text="Confirm Data Purge" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <MFXFontIcon description="mfx-exclamation-circle" fill="#4a4a4a" layoutX="271.0" layoutY="187.0" size="20.0" />
+                  <Label layoutX="272.0" layoutY="204.0" prefHeight="70.0" prefWidth="156.0" text="This will remove data from all&#10;completed jobs. A backup of&#10;the current data file will be&#10;made in the &quot;temp&quot; folder." />
+               </children>
+            </Pane>
+            <Pane fx:id="confirmRemovePrompt" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #F4EAE6;" visible="false">
+               <children>
+                  <Rectangle arcHeight="30.0" arcWidth="30.0" height="200.0" layoutX="240.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="220.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="1.0" green="0.7058823704719543" blue="0.658823549747467" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <MFXButton alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" layoutX="350.0" layoutY="296.0" onAction="#confirmRemovePressed" rippleAnimationSpeed="4.0" rippleColor="#ffb4a8" style="-fx-background-color: #ff6955;" text="CONFIRM" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </MFXButton>
+                  <MFXButton alignment="CENTER" buttonType="RAISED" depthLevel="LEVEL1" layoutX="267.0" layoutY="296.0" onAction="#hidePrompts" rippleAnimationSpeed="4.0" rippleColor="#9ad3ae" style="-fx-background-color: #66ab7f;" text="CANCEL" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </MFXButton>
+                  <Label alignment="CENTER" layoutX="288.0" layoutY="169.0" text="Confirm Entry Removal" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <MFXFontIcon description="mfx-exclamation-circle" fill="#4a4a4a" layoutX="260.0" layoutY="187.0" size="20.0" />
+                  <Label alignment="CENTER" layoutX="274.0" layoutY="202.0" text="Remove this entry from data?" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="confirmRemovalLabel1" alignment="CENTER" layoutX="190.0" layoutY="233.0" prefHeight="17.0" prefWidth="320.0" text="Error! Please cancel" textAlignment="CENTER" textFill="#800808">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label fx:id="confirmRemovalLabel2" alignment="CENTER" layoutX="190.0" layoutY="250.0" prefHeight="22.0" prefWidth="320.0" text="Error! Please cancel" textAlignment="CENTER" textFill="#800808">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children></AnchorPane>
+   </center>
+</BorderPane>

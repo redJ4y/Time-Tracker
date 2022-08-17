@@ -1,0 +1,11 @@
+.table-view .table-cell {
+    -fx-alignment: CENTER-LEFT;
+}
+
+.mfx-legacy-table-view {
+    -fx-padding: 0.0 0.0 12.0 0.0;
+}
+
+.mfx-legacy-table-view .column-header .label {
+    -fx-padding: 8.0 0.0 8.0 0.0;
+}
